@@ -1,0 +1,19 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de IDE y editores
+.idea/
+.vscode/
+*.sublime-*
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*.log
+
+# Directorios node.js
+node_modules/
+npm-debug.log 
