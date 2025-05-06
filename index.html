@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Lido dal Pincio - Stabilimento balneare e ristorante sul mare a Santa Maria di Castellabate con spiaggia attrezzata e cucina locale">
+    <meta name="theme-color" content="#1d3557">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Lido dal Pincio - Relax, Gusto e Mare nel Cuore del Cilento</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Añadimos fuentes de Google (Montserrat y Dancing Script para el logo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Añadimos Font Awesome para iconos modernos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Agregamos reglas CSS adicionales inline para el primer renderizado -->
+    <style>
+        body {
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        /* Removemos la regla que oculta los elementos */
+        .hero-content {
+            opacity: 1 !important;
+            display: block !important;
+        }
+        .hero h1, .hero p {
+            display: block !important;
+        }
+        .hero-buttons {
+            display: flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                background: #2c3e50;
+                height: 100vh;
+                width: 100%;
+                flex-direction: column;
+                clip-path: circle(0px at 90% -20%);
+                -webkit-clip-path: circle(0px at 90% -20%);
+                transition: all 0.7s ease-out;
+                pointer-events: none;
+                top: 0;
+                left: 0;
+                justify-content: center;
+                z-index: 999;
+            }
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo-container">
+                    <img src="images/logo.png" alt="Lido dal Pincio Logo" class="header-logo">
+                    <span class="logo-text">Lido dal Pincio</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> Chi Siamo</a></li>
+                    <li><a href="#services"><i class="fas fa-concierge-bell"></i> Servizi</a></li>
+                    <li><a href="#menu"><i class="fas fa-utensils"></i> Cucina</a></li>
+                    <li><a href="#experience"><i class="fas fa-star"></i> Esperienza</a></li>
+                    <li><a href="#gallery"><i class="fas fa-images"></i> Galleria</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contatti</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section con imagen de fondo -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Relax, Gusto e Mare nel Cuore del Cilento</h1>
+                <p>Scopri un'oasi di relax e buon cibo con vista sul magnifico Mar Tirreno a Santa Maria di Castellabate.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn"><i class="fas fa-calendar-alt"></i> Prenota Ora</a>
+                    <a href="#gallery" class="btn btn-alt"><i class="fas fa-images"></i> Esplora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <span class="title-accent">Benvenuti</span>
+                <h2>Cos'è Lido dal Pincio?</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="images/about-lido.jpg" alt="Lido dal Pincio vista mare">
+                </div>
+                <div class="about-text">
+                    <h3>Uno stabilimento balneare completo</h3>
+                    <p>Lido dal Pincio è uno stabilimento balneare che unisce il meglio del relax balneare alla gastronomia cilentana, offrendo un'esperienza completa a pochi passi dal mare.</p>
+                    <p>Ideale per famiglie, coppie e gruppi di amici che cercano relax e buon cibo fronte mare in uno dei luoghi più suggestivi del Cilento.</p>
+                    <ul class="features-list">
+                        <li>Spiaggia attrezzata con ombrelloni e lettini</li>
+                        <li>Ristorante con cucina locale e pesce fresco</li>
+                        <li>Bar con aperitivi al tramonto</li>
+                        <li>Eventi musicali e culturali</li>
+                        <li>WiFi, docce calde, cabine e parcheggio</li>
+                    </ul>
+                    <a href="#services" class="btn"><i class="fas fa-arrow-circle-right"></i> Scopri i Nostri Servizi</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <span class="title-accent">Cosa Offriamo</span>
+                <h2>I Nostri Servizi</h2>
+            </div>
+            <div class="services-container">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-umbrella-beach"></i></div>
+                    <h3 class="service-title">Spiaggia Attrezzata</h3>
+                    <p class="service-description">Ombrelloni e lettini comodi su una delle spiagge più belle del Cilento, con servizio in spiaggia.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-utensils"></i></div>
+                    <h3 class="service-title">Ristorante</h3>
+                    <p class="service-description">Cucina locale con specialità di pesce fresco e piatti della tradizione cilentana.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-cocktail"></i></div>
+                    <h3 class="service-title">Bar</h3>
+                    <p class="service-description">Aperitivi al tramonto, cocktail e bevande fresche per momenti di relax.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-music"></i></div>
+                    <h3 class="service-title">Eventi</h3>
+                    <p class="service-description">Eventi musicali e culturali regolari per tutti i gusti e tutte le età.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-shower"></i></div>
+                    <h3 class="service-title">Comfort</h3>
+                    <p class="service-description">WiFi gratuito, docce calde e cabine per garantire il massimo comfort.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-parking"></i></div>
+                    <h3 class="service-title">Parcheggio</h3>
+                    <p class="service-description">Parcheggio comodo e sicuro per i nostri ospiti.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <span class="title-accent">Sapori Mediterranei</span>
+                <h2>La Nostra Cucina</h2>
+            </div>
+            <div class="menu-content">
+                <p class="menu-description">Il ristorante Lido dal Pincio è conosciuto per i suoi piatti di mare preparati con ingredienti freschi e locali. La nostra cucina celebra i sapori autentici del Cilento con un tocco di creatività.</p>
+
+                <div class="menu-highlights">
+                    <div class="menu-highlight">
+                        <div class="menu-icon"><i class="fas fa-fish"></i></div>
+                        <h4>Antipasti di Mare</h4>
+                        <p>Una selezione di antipasti freschi che esaltano i sapori del mare, preparati con il pescato del giorno.</p>
+                    </div>
+                    <div class="menu-highlight">
+                        <div class="menu-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <h4>Primi Piatti</h4>
+                        <p>Pasta fresca con sughi di pesce e specialità della tradizione cilentana.</p>
+                    </div>
+                    <div class="menu-highlight">
+                        <div class="menu-icon"><i class="fas fa-carrot"></i></div>
+                        <h4>Secondi di Pesce</h4>
+                        <p>Pesce fresco preparato secondo le ricette della tradizione mediterranea.</p>
+                    </div>
+                    <div class="menu-highlight">
+                        <div class="menu-icon"><i class="fas fa-birthday-cake"></i></div>
+                        <h4>Dessert Artigianali</h4>
+                        <p>Dolci fatti in casa con ingredienti genuini per concludere il pasto in dolcezza.</p>
+                    </div>
+                </div>
+
+                <div class="menu-buttons">
+                    <a href="https://book.octotable.com/otb/menu/menu.xhtml;octotablesessionid=b40f97ad25ed405f75f6bff37c21?id=7c17cbe981ad3176a9975c31e797dd70&lang=it" class="btn btn-menu" target="_blank"><i class="fas fa-book-open"></i> Visualizza Menu Completo</a>
+                    <a href="#contact" class="btn"><i class="fas fa-chair"></i> Prenota un Tavolo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-title">
+                <span class="title-accent">Momenti Speciali</span>
+                <h2>Un'Esperienza Unica</h2>
+            </div>
+            <div class="experience-content">
+                <div class="experience-text">
+                    <h3>Tramonti Indimenticabili sul Mar Tirreno</h3>
+                    <p>Goditi un aperitivo mentre ammiri un tramonto indimenticabile sul Mar Tirreno, creando ricordi che dureranno per sempre.</p>
+                    <p>Dal lido partono anche percorsi ciclabili che collegano al centro di Santa Maria o alla zona Lago, ideali per esplorare il fascino del Cilento.</p>
+                    <p>Che tu sia alla ricerca di relax, buon cibo, o semplicemente desideri goderti una giornata al mare, Lido dal Pincio offre tutto ciò di cui hai bisogno per una vacanza perfetta.</p>
+                    <a href="#gallery" class="btn"><i class="fas fa-camera"></i> Guarda la Galleria</a>
+                </div>
+                <div class="experience-img">
+                    <img src="images/experience-sunset.jpg" alt="Tramonto al Lido dal Pincio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <span class="title-accent">I Nostri Momenti</span>
+                <h2>Galleria</h2>
+            </div>
+            <p class="gallery-intro">Dai un'occhiata alle foto del nostro lido o visita il nostro profilo Instagram: <a href="https://www.instagram.com/lidodalpincio" class="ig-link" target="_blank"><i class="fab fa-instagram"></i> @lidodalpincio</a></p>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="images/gallery-beach.jpg" alt="Spiaggia Lido dal Pincio">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">La nostra spiaggia attrezzata</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-restaurant.jpg" alt="Ristorante Lido dal Pincio">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Il nostro ristorante</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-food.jpg" alt="Piatti del Lido dal Pincio">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Le nostre specialità</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-aperitivo.jpg" alt="Aperitivo al tramonto">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Aperitivo al tramonto</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-events.jpg" alt="Eventi al Lido dal Pincio">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">I nostri eventi</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-view.jpg" alt="Vista mare dal Lido">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">Vista panoramica</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <span class="title-accent">Parlaci</span>
+                <h2>Contatti</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Vieni a Trovarci</h3>
+                    <div class="contact-details">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Piazzale+dei+Rocchi+84048+Santa+Maria+di+Castellabate+SA+Italia" target="_blank" class="contact-item contact-link">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-text">
+                                <h5>Indirizzo</h5>
+                                <p>Piazzale dei Rocchi, 84048 Santa Maria di Castellabate (SA), Italia</p>
+                            </div>
+                        </a>
+                        <a href="tel:+390974184892" class="contact-item contact-link">
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="contact-text">
+                                <h5>Telefono</h5>
+                                <p>0974 184 8929</p>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/393331948183" target="_blank" class="contact-item contact-link">
+                            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                            <div class="contact-text">
+                                <h5>WhatsApp</h5>
+                                <p>Scrivici un messaggio</p>
+                            </div>
+                        </a>
+                        <a href="mailto:infolidodalpincio@gmail.com" class="contact-item contact-link">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text">
+                                <h5>Email</h5>
+                                <p>infolidodalpincio@gmail.com</p>
+                            </div>
+                        </a>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                            <div class="contact-text">
+                                <h5>Orari di Apertura</h5>
+                                <p>Tutti i giorni: 9:00 - 23:00</p>
+                                <p>Giugno - Settembre</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Seguici sui Social</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/lidodalpincio" class="social-link" title="Instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/Lido-dal-Pincio" class="social-link" title="Facebook" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@lido_dal_pincio" class="social-link" title="TikTok" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+
+                    <!-- Botón de reserva rápida -->
+                    <div class="quick-reserve">
+                        <a href="tel:0974184892" class="btn btn-reserve">
+                            <span class="btn-icon"><i class="fas fa-phone-alt"></i></span>
+                            Chiama per Prenotare
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3029.978237307594!2d14.950591115268743!3d40.27888867937843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133bc000b058b5c9%3A0x676726a9290efc30!2sPiazzale%20dei%20Rocchi%2C%2084048%20Santa%20Maria%20di%20Castellabate%20SA!5e0!3m2!1sit!2sit!4v1695662134567!5m2!1sit!2sit" class="map" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="images/logo.png" alt="Lido dal Pincio Logo" class="footer-logo-img">
+                        <h4 class="footer-brand">Lido dal Pincio</h4>
+                    </div>
+                    <p>Relax, gusto e mare nel cuore del Cilento. Uno stabilimento balneare completo per un'esperienza indimenticabile a Santa Maria di Castellabate.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Link Utili</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Servizi</a></li>
+                        <li><a href="#menu"><i class="fas fa-chevron-right"></i> Cucina</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Galleria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Orari</h4>
+                    <ul class="footer-schedule">
+                        <li>
+                            <span><i class="fas fa-calendar-alt"></i> Lunedì - Domenica</span>
+                            <span>9:00 - 23:00</span>
+                        </li>
+                        <li>
+                            <span><i class="fas fa-sun"></i> Stagione</span>
+                            <span>Giugno - Settembre</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Iscriviti per ricevere aggiornamenti su eventi e promozioni.</p>
+                    <div class="newsletter">
+                        <form>
+                            <input type="email" placeholder="La tua email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Lido dal Pincio. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
