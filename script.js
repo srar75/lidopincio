@@ -6,34 +6,107 @@ const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const header = document.querySelector('header');
 
-// Asegurarnos que el header tiene la altura correcta al cargar la página
-function updateHeaderHeight() {
-    if (header) {
-        document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
-    }
-}
-
-// Ejecutar al cargar
-updateHeaderHeight();
-
-// Asegurar que los elementos del hero son visibles siempre
-function ensureHeroContentVisibility() {
+// Función para forzar la visibilidad del hero
+function forceHeroVisibility() {
+    // Seleccionar los elementos del hero
     const heroContent = document.querySelector('.hero-content');
     const heroTitle = document.querySelector('.hero h1');
     const heroText = document.querySelector('.hero p');
     const heroButtons = document.querySelector('.hero-buttons');
     
-    if (heroContent) heroContent.style.opacity = '1';
-    if (heroTitle) heroTitle.style.display = 'block';
-    if (heroText) heroText.style.display = 'block';
+    // Forzar la visibilidad con estilos inline
+    if (heroContent) {
+        heroContent.style.display = 'block';
+        heroContent.style.opacity = '1';
+        heroContent.style.visibility = 'visible';
+        heroContent.style.zIndex = '5';
+    }
+    
+    if (heroTitle) {
+        heroTitle.style.display = 'block';
+        heroTitle.style.opacity = '1';
+        heroTitle.style.visibility = 'visible';
+    }
+    
+    if (heroText) {
+        heroText.style.display = 'block';
+        heroText.style.opacity = '1';
+        heroText.style.visibility = 'visible';
+    }
+    
     if (heroButtons) {
-        heroButtons.style.visibility = 'visible';
+        heroButtons.style.display = 'flex';
         heroButtons.style.opacity = '1';
+        heroButtons.style.visibility = 'visible';
     }
 }
 
-// Ejecutar al cargar
-ensureHeroContentVisibility();
+// Función para eliminar bordes de imágenes
+function removeImageBorders() {
+    // Seleccionar todas las imágenes
+    const images = document.querySelectorAll('img, .gallery-item, .about-img, .experience-img, .contact-map');
+    
+    // Eliminar bordes con estilos inline
+    images.forEach(img => {
+        img.style.border = 'none';
+        img.style.outline = 'none';
+        img.style.borderColor = 'transparent';
+    });
+    
+    // Eliminar también posibles pseudo-elementos
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+        .gallery-item::before, .gallery-item::after,
+        .about-img::before, .about-img::after,
+        .experience-img::before, .experience-img::after,
+        .contact-map::before, .contact-map::after {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+    `;
+    document.head.appendChild(styleElement);
+}
+
+// Asegurarnos que el header tiene la altura correcta
+function updateHeaderHeight() {
+    if (header) {
+        const headerHeight = header.offsetHeight;
+        document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+        
+        // Ajustar el padding del hero basado en la altura del header
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.paddingTop = `${headerHeight}px`;
+        }
+    }
+}
+
+// Ejecutar funciones al cargar
+document.addEventListener('DOMContentLoaded', () => {
+    updateHeaderHeight();
+    forceHeroVisibility();
+    removeImageBorders();
+    
+    // Añadir un listener para cuando se completen todas las imágenes
+    window.addEventListener('load', () => {
+        forceHeroVisibility();
+        removeImageBorders();
+    });
+});
+
+// Llamar de nuevo después de un pequeño retraso para asegurar que se aplican los cambios
+setTimeout(() => {
+    forceHeroVisibility();
+    removeImageBorders();
+    updateHeaderHeight();
+}, 500);
+
+// Y nuevamente después de 1 segundo
+setTimeout(() => {
+    forceHeroVisibility();
+    removeImageBorders();
+}, 1000);
 
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
@@ -329,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Asegurar que los elementos del hero son visibles
-    ensureHeroContentVisibility();
+    forceHeroVisibility();
     
     // Resto del código de carga de imágenes...
     const lazyImages = document.querySelectorAll('img');
@@ -382,4 +455,6 @@ window.addEventListener('orientationchange', () => {
 // Asegurar que la página se recalcula al cambiar tamaño de ventana
 window.addEventListener('resize', () => {
     updateHeaderHeight();
+    forceHeroVisibility();
+    removeImageBorders();
 });

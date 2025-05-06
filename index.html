@@ -22,19 +22,49 @@
             margin: 0;
             padding: 0;
         }
-        /* Removemos la regla que oculta los elementos */
+        
+        /* Forzar visibilidad del hero */
         .hero-content {
             opacity: 1 !important;
             display: block !important;
+            visibility: visible !important;
+            z-index: 5 !important;
         }
-        .hero h1, .hero p {
+        
+        .hero h1 {
             display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
         }
+        
+        .hero p {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
         .hero-buttons {
             display: flex !important;
             opacity: 1 !important;
             visibility: visible !important;
         }
+        
+        /* Eliminar bordes de imágenes */
+        img, .gallery-item, .about-img, .experience-img, .contact-map {
+            border: none !important;
+            outline: none !important;
+            border-color: transparent !important;
+        }
+        
+        .gallery-item::before, .gallery-item::after,
+        .about-img::before, .about-img::after,
+        .experience-img::before, .experience-img::after,
+        .contact-map::before, .contact-map::after {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        
         @media (max-width: 768px) {
             .nav-menu {
                 position: fixed;
@@ -86,12 +116,12 @@
     </header>
 
     <!-- Hero Section con imagen de fondo -->
-    <section class="hero" id="home">
+    <section class="hero" id="home" style="padding-top: 80px !important; margin-top: 0 !important;">
         <div class="container">
-            <div class="hero-content">
-                <h1>Relax, Gusto e Mare nel Cuore del Cilento</h1>
-                <p>Scopri un'oasi di relax e buon cibo con vista sul magnifico Mar Tirreno a Santa Maria di Castellabate.</p>
-                <div class="hero-buttons">
+            <div class="hero-content" style="opacity: 1 !important; display: block !important; visibility: visible !important; z-index: 5 !important;">
+                <h1 style="display: block !important; opacity: 1 !important; visibility: visible !important;">Relax, Gusto e Mare nel Cuore del Cilento</h1>
+                <p style="display: block !important; opacity: 1 !important; visibility: visible !important;">Scopri un'oasi di relax e buon cibo con vista sul magnifico Mar Tirreno a Santa Maria di Castellabate.</p>
+                <div class="hero-buttons" style="display: flex !important; opacity: 1 !important; visibility: visible !important;">
                     <a href="#contact" class="btn"><i class="fas fa-calendar-alt"></i> Prenota Ora</a>
                     <a href="#gallery" class="btn btn-alt"><i class="fas fa-images"></i> Esplora</a>
                 </div>

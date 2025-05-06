@@ -186,8 +186,8 @@ nav {
     justify-content: center;
     text-align: center;
     color: var(--light-color);
-    padding-top: var(--header-height);
-    margin-top: 0;
+    padding-top: 80px !important;
+    margin-top: 0 !important;
     overflow: hidden;
     z-index: 1;
 }
@@ -207,7 +207,7 @@ nav {
 .hero-content {
     position: relative;
     max-width: 800px;
-    z-index: 2;
+    z-index: 5 !important;
     padding: 50px;
     border-radius: var(--border-radius);
     background: rgba(0, 0, 0, 0.25);
@@ -217,36 +217,39 @@ nav {
     animation: fadeIn 1.5s ease;
     display: block !important;
     opacity: 1 !important;
+    visibility: visible !important;
 }
   
 .hero h1 {
     font-size: 3.8rem;
     font-weight: 700;
     margin-bottom: 20px;
-    animation: fadeInDown 1s ease;
     text-shadow: var(--text-shadow);
     background: linear-gradient(to right, #ffffff, #f9f9f9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 1px;
     display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
   
 .hero p {
     font-size: 1.3rem;
     margin-bottom: 30px;
-    animation: fadeInUp 1s ease 0.3s both;
     text-shadow: var(--text-shadow);
     line-height: 1.6;
     display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: white;
 }
   
 .hero-buttons {
-    display: flex;
+    display: flex !important;
     gap: 20px;
     justify-content: center;
     margin-top: 30px;
-    animation: fadeInUp 1s ease 0.6s both;
     visibility: visible !important;
     opacity: 1 !important;
 }
@@ -1293,7 +1296,7 @@ footer:before {
 @media screen and (max-width: 768px) {
     .hero {
         min-height: 100vh;
-        padding-top: var(--header-height);
+        padding-top: 80px !important;
     }
     
     .hero-content {
@@ -1302,6 +1305,7 @@ footer:before {
         background: rgba(0, 0, 0, 0.4);
         display: block !important;
         opacity: 1 !important;
+        z-index: 5 !important;
     }
     
     body, html {
@@ -1363,11 +1367,13 @@ footer:before {
     .hero h1 {
         font-size: 2.3rem;
         display: block !important;
+        visibility: visible !important;
     }
     
     .hero p {
         font-size: 1rem;
         display: block !important;
+        visibility: visible !important;
     }
     
     .section-title h2 {
@@ -1808,6 +1814,7 @@ body {
 .experience-img img {
     border: none !important;
     outline: none !important;
+    border-color: transparent !important;
     display: block;
     width: 100%;
     height: 100%;
@@ -1821,8 +1828,12 @@ body {
 .about-img::before,
 .about-img::after,
 .experience-img::before,
-.experience-img::after {
+.experience-img::after,
+.contact-map::before,
+.contact-map::after {
     display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 /* Asegurar que la imagen cubre completamente su contenedor */
@@ -1832,6 +1843,7 @@ img {
     display: block;
     border: none !important;
     outline: none !important;
+    border-color: transparent !important;
 }
 
 /* Estilo unificado para todas las imágenes de la galería */
