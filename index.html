@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Añadimos Font Awesome para iconos modernos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
@@ -16,17 +18,17 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo-container">
-                    <img src="logo.png" alt="Lido dal Pincio Logo" class="header-logo">
+                    <img src="images/logo.png" alt="Lido dal Pincio Logo" class="header-logo">
                     <span class="logo-text">Lido dal Pincio</span>
                 </a>
                 <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">Chi Siamo</a></li>
-                    <li><a href="#services">Servizi</a></li>
-                    <li><a href="#menu">Cucina</a></li>
-                    <li><a href="#experience">Esperienza</a></li>
-                    <li><a href="#gallery">Galleria</a></li>
-                    <li><a href="#contact">Contatti</a></li>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> Chi Siamo</a></li>
+                    <li><a href="#services"><i class="fas fa-concierge-bell"></i> Servizi</a></li>
+                    <li><a href="#menu"><i class="fas fa-utensils"></i> Cucina</a></li>
+                    <li><a href="#experience"><i class="fas fa-star"></i> Esperienza</a></li>
+                    <li><a href="#gallery"><i class="fas fa-images"></i> Galleria</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contatti</a></li>
                 </ul>
                 <div class="hamburger">
                     <div></div>
@@ -43,7 +45,10 @@
             <div class="hero-content">
                 <h1>Relax, Gusto e Mare nel Cuore del Cilento</h1>
                 <p>Scopri un'oasi di relax e buon cibo con vista sul magnifico Mar Tirreno a Santa Maria di Castellabate.</p>
-                <a href="#contact" class="btn">Prenota Ora</a>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn"><i class="fas fa-calendar-alt"></i> Prenota Ora</a>
+                    <a href="#gallery" class="btn btn-alt"><i class="fas fa-images"></i> Esplora</a>
+                </div>
             </div>
         </div>
     </section>
@@ -52,11 +57,12 @@
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
+                <span class="title-accent">Benvenuti</span>
                 <h2>Cos'è Lido dal Pincio?</h2>
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="/api/placeholder/600/400" alt="Lido dal Pincio vista mare">
+                    <img src="images/about-lido.jpg" alt="Lido dal Pincio vista mare">
                 </div>
                 <div class="about-text">
                     <h3>Uno stabilimento balneare completo</h3>
@@ -69,7 +75,7 @@
                         <li>Eventi musicali e culturali</li>
                         <li>WiFi, docce calde, cabine e parcheggio</li>
                     </ul>
-                    <a href="#services" class="btn">Scopri i Nostri Servizi</a>
+                    <a href="#services" class="btn"><i class="fas fa-arrow-circle-right"></i> Scopri i Nostri Servizi</a>
                 </div>
             </div>
         </div>
@@ -79,36 +85,37 @@
     <section class="services" id="services">
         <div class="container">
             <div class="section-title">
+                <span class="title-accent">Cosa Offriamo</span>
                 <h2>I Nostri Servizi</h2>
             </div>
             <div class="services-container">
                 <div class="service-item">
-                    <div class="service-icon">🏖️</div>
+                    <div class="service-icon"><i class="fas fa-umbrella-beach"></i></div>
                     <h3 class="service-title">Spiaggia Attrezzata</h3>
                     <p class="service-description">Ombrelloni e lettini comodi su una delle spiagge più belle del Cilento, con servizio in spiaggia.</p>
                 </div>
                 <div class="service-item">
-                    <div class="service-icon">🍽️</div>
+                    <div class="service-icon"><i class="fas fa-utensils"></i></div>
                     <h3 class="service-title">Ristorante</h3>
                     <p class="service-description">Cucina locale con specialità di pesce fresco e piatti della tradizione cilentana.</p>
                 </div>
                 <div class="service-item">
-                    <div class="service-icon">🍹</div>
+                    <div class="service-icon"><i class="fas fa-cocktail"></i></div>
                     <h3 class="service-title">Bar</h3>
                     <p class="service-description">Aperitivi al tramonto, cocktail e bevande fresche per momenti di relax.</p>
                 </div>
                 <div class="service-item">
-                    <div class="service-icon">🎵</div>
+                    <div class="service-icon"><i class="fas fa-music"></i></div>
                     <h3 class="service-title">Eventi</h3>
                     <p class="service-description">Eventi musicali e culturali regolari per tutti i gusti e tutte le età.</p>
                 </div>
                 <div class="service-item">
-                    <div class="service-icon">🚿</div>
+                    <div class="service-icon"><i class="fas fa-shower"></i></div>
                     <h3 class="service-title">Comfort</h3>
                     <p class="service-description">WiFi gratuito, docce calde e cabine per garantire il massimo comfort.</p>
                 </div>
                 <div class="service-item">
-                    <div class="service-icon">🅿️</div>
+                    <div class="service-icon"><i class="fas fa-parking"></i></div>
                     <h3 class="service-title">Parcheggio</h3>
                     <p class="service-description">Parcheggio comodo e sicuro per i nostri ospiti.</p>
                 </div>
@@ -120,6 +127,7 @@
     <section class="menu" id="menu">
         <div class="container">
             <div class="section-title">
+                <span class="title-accent">Sapori Mediterranei</span>
                 <h2>La Nostra Cucina</h2>
             </div>
             <div class="menu-content">
@@ -127,26 +135,30 @@
 
                 <div class="menu-highlights">
                     <div class="menu-highlight">
+                        <div class="menu-icon"><i class="fas fa-fish"></i></div>
                         <h4>Antipasti di Mare</h4>
                         <p>Una selezione di antipasti freschi che esaltano i sapori del mare, preparati con il pescato del giorno.</p>
                     </div>
                     <div class="menu-highlight">
+                        <div class="menu-icon"><i class="fas fa-clipboard-list"></i></div>
                         <h4>Primi Piatti</h4>
                         <p>Pasta fresca con sughi di pesce e specialità della tradizione cilentana.</p>
                     </div>
                     <div class="menu-highlight">
+                        <div class="menu-icon"><i class="fas fa-carrot"></i></div>
                         <h4>Secondi di Pesce</h4>
                         <p>Pesce fresco preparato secondo le ricette della tradizione mediterranea.</p>
                     </div>
                     <div class="menu-highlight">
+                        <div class="menu-icon"><i class="fas fa-birthday-cake"></i></div>
                         <h4>Dessert Artigianali</h4>
                         <p>Dolci fatti in casa con ingredienti genuini per concludere il pasto in dolcezza.</p>
                     </div>
                 </div>
 
                 <div class="menu-buttons">
-                    <a href="https://book.octotable.com/otb/menu/menu.xhtml;octotablesessionid=b40f97ad25ed405f75f6bff37c21?id=7c17cbe981ad3176a9975c31e797dd70&lang=it" class="btn btn-menu" target="_blank">Visualizza Menu Completo</a>
-                    <a href="#contact" class="btn">Prenota un Tavolo</a>
+                    <a href="https://book.octotable.com/otb/menu/menu.xhtml;octotablesessionid=b40f97ad25ed405f75f6bff37c21?id=7c17cbe981ad3176a9975c31e797dd70&lang=it" class="btn btn-menu" target="_blank"><i class="fas fa-book-open"></i> Visualizza Menu Completo</a>
+                    <a href="#contact" class="btn"><i class="fas fa-chair"></i> Prenota un Tavolo</a>
                 </div>
             </div>
         </div>
@@ -156,6 +168,7 @@
     <section class="experience" id="experience">
         <div class="container">
             <div class="section-title">
+                <span class="title-accent">Momenti Speciali</span>
                 <h2>Un'Esperienza Unica</h2>
             </div>
             <div class="experience-content">
@@ -164,10 +177,10 @@
                     <p>Goditi un aperitivo mentre ammiri un tramonto indimenticabile sul Mar Tirreno, creando ricordi che dureranno per sempre.</p>
                     <p>Dal lido partono anche percorsi ciclabili che collegano al centro di Santa Maria o alla zona Lago, ideali per esplorare il fascino del Cilento.</p>
                     <p>Che tu sia alla ricerca di relax, buon cibo, o semplicemente desideri goderti una giornata al mare, Lido dal Pincio offre tutto ciò di cui hai bisogno per una vacanza perfetta.</p>
-                    <a href="#gallery" class="btn">Guarda la Galleria</a>
+                    <a href="#gallery" class="btn"><i class="fas fa-camera"></i> Guarda la Galleria</a>
                 </div>
                 <div class="experience-img">
-                    <img src="/api/placeholder/600/400" alt="Tramonto al Lido dal Pincio">
+                    <img src="images/experience-sunset.jpg" alt="Tramonto al Lido dal Pincio">
                 </div>
             </div>
         </div>
@@ -177,42 +190,43 @@
     <section class="gallery" id="gallery">
         <div class="container">
             <div class="section-title">
+                <span class="title-accent">I Nostri Momenti</span>
                 <h2>Galleria</h2>
             </div>
-            <p style="text-align: center; margin-bottom: 30px;">Dai un'occhiata alle foto del nostro lido o visita il nostro profilo Instagram: <a href="https://www.instagram.com/lido_dal_pincio" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">@lido_dal_pincio</a></p>
+            <p class="gallery-intro">Dai un'occhiata alle foto del nostro lido o visita il nostro profilo Instagram: <a href="https://www.instagram.com/lidodalpincio" class="ig-link" target="_blank"><i class="fab fa-instagram"></i> @lidodalpincio</a></p>
             <div class="gallery-container">
                 <div class="gallery-item">
-                    <img src="/api/placeholder/400/400" alt="Spiaggia Lido dal Pincio">
+                    <img src="images/gallery-beach.jpg" alt="Spiaggia Lido dal Pincio">
                     <div class="gallery-overlay">
                         <div class="gallery-text">La nostra spiaggia attrezzata</div>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/api/placeholder/400/400" alt="Ristorante Lido dal Pincio">
+                    <img src="images/gallery-restaurant.jpg" alt="Ristorante Lido dal Pincio">
                     <div class="gallery-overlay">
                         <div class="gallery-text">Il nostro ristorante</div>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/api/placeholder/400/400" alt="Piatti del Lido dal Pincio">
+                    <img src="images/gallery-food.jpg" alt="Piatti del Lido dal Pincio">
                     <div class="gallery-overlay">
                         <div class="gallery-text">Le nostre specialità</div>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/api/placeholder/400/400" alt="Aperitivo al tramonto">
+                    <img src="images/gallery-aperitivo.jpg" alt="Aperitivo al tramonto">
                     <div class="gallery-overlay">
                         <div class="gallery-text">Aperitivo al tramonto</div>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/api/placeholder/400/400" alt="Eventi al Lido dal Pincio">
+                    <img src="images/gallery-events.jpg" alt="Eventi al Lido dal Pincio">
                     <div class="gallery-overlay">
                         <div class="gallery-text">I nostri eventi</div>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/api/placeholder/400/400" alt="Vista mare dal Lido">
+                    <img src="images/gallery-view.jpg" alt="Vista mare dal Lido">
                     <div class="gallery-overlay">
                         <div class="gallery-text">Vista panoramica</div>
                     </div>
@@ -225,6 +239,7 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
+                <span class="title-accent">Parlaci</span>
                 <h2>Contatti</h2>
             </div>
             <div class="contact-content">
@@ -232,35 +247,35 @@
                     <h3>Vieni a Trovarci</h3>
                     <div class="contact-details">
                         <a href="https://www.google.com/maps/search/?api=1&query=Piazzale+dei+Rocchi+84048+Santa+Maria+di+Castellabate+SA+Italia" target="_blank" class="contact-item contact-link">
-                            <div class="contact-icon">📍</div>
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <div class="contact-text">
                                 <h5>Indirizzo</h5>
                                 <p>Piazzale dei Rocchi, 84048 Santa Maria di Castellabate (SA), Italia</p>
                             </div>
                         </a>
                         <a href="tel:+390974184892" class="contact-item contact-link">
-                            <div class="contact-icon">📞</div>
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
                             <div class="contact-text">
                                 <h5>Telefono</h5>
-                                <p>+39 0974 184 8929</p>
+                                <p>0974 184 8929</p>
                             </div>
                         </a>
                         <a href="https://wa.me/393331948183" target="_blank" class="contact-item contact-link">
-                            <div class="contact-icon">💬</div>
+                            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
                             <div class="contact-text">
                                 <h5>WhatsApp</h5>
                                 <p>Scrivici un messaggio</p>
                             </div>
                         </a>
-                        <a href="mailto:info@lidodalpincio.it" class="contact-item contact-link">
-                            <div class="contact-icon">✉️</div>
+                        <a href="mailto:infolidodalpincio@gmail.com" class="contact-item contact-link">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                             <div class="contact-text">
                                 <h5>Email</h5>
-                                <p>info@lidodalpincio.it</p>
+                                <p>infolidodalpincio@gmail.com</p>
                             </div>
                         </a>
                         <div class="contact-item">
-                            <div class="contact-icon">⏰</div>
+                            <div class="contact-icon"><i class="fas fa-clock"></i></div>
                             <div class="contact-text">
                                 <h5>Orari di Apertura</h5>
                                 <p>Tutti i giorni: 9:00 - 23:00</p>
@@ -270,27 +285,21 @@
                     </div>
                     <h4>Seguici sui Social</h4>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/lido_dal_pincio" class="social-link" title="Instagram" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
+                        <a href="https://www.instagram.com/lidodalpincio" class="social-link" title="Instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
                         </a>
                         <a href="https://www.facebook.com/Lido-dal-Pincio" class="social-link" title="Facebook" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-                            </svg>
+                            <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="https://www.tiktok.com/@lido_dal_pincio" class="social-link" title="TikTok" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-                            </svg>
+                            <i class="fab fa-tiktok"></i>
                         </a>
                     </div>
 
                     <!-- Botón de reserva rápida -->
                     <div class="quick-reserve">
-                        <a href="tel:+390974184892" class="btn btn-reserve">
-                            <span class="btn-icon">📱</span>
+                        <a href="tel:0974184892" class="btn btn-reserve">
+                            <span class="btn-icon"><i class="fas fa-phone-alt"></i></span>
                             Chiama per Prenotare
                         </a>
                     </div>
@@ -308,7 +317,7 @@
             <div class="footer-content">
                 <div class="footer-col">
                     <div class="footer-logo">
-                        <img src="logo.png" alt="Lido dal Pincio Logo" class="footer-logo-img">
+                        <img src="images/logo.png" alt="Lido dal Pincio Logo" class="footer-logo-img">
                         <h4 class="footer-brand">Lido dal Pincio</h4>
                     </div>
                     <p>Relax, gusto e mare nel cuore del Cilento. Uno stabilimento balneare completo per un'esperienza indimenticabile a Santa Maria di Castellabate.</p>
@@ -316,22 +325,22 @@
                 <div class="footer-col">
                     <h4>Link Utili</h4>
                     <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">Chi Siamo</a></li>
-                        <li><a href="#services">Servizi</a></li>
-                        <li><a href="#menu">Cucina</a></li>
-                        <li><a href="#gallery">Galleria</a></li>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Servizi</a></li>
+                        <li><a href="#menu"><i class="fas fa-chevron-right"></i> Cucina</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Galleria</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Orari</h4>
                     <ul class="footer-schedule">
                         <li>
-                            <span>Lunedì - Domenica</span>
+                            <span><i class="fas fa-calendar-alt"></i> Lunedì - Domenica</span>
                             <span>9:00 - 23:00</span>
                         </li>
                         <li>
-                            <span>Stagione</span>
+                            <span><i class="fas fa-sun"></i> Stagione</span>
                             <span>Giugno - Settembre</span>
                         </li>
                     </ul>
@@ -342,7 +351,7 @@
                     <div class="newsletter">
                         <form>
                             <input type="email" placeholder="La tua email">
-                            <button type="submit">Iscriviti</button>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
                         </form>
                     </div>
                 </div>
@@ -355,7 +364,7 @@
 
     <!-- Scroll to top -->
     <div class="scroll-top">
-        ⬆️
+        <i class="fas fa-arrow-up"></i>
     </div>
 
     <!-- JavaScript -->
