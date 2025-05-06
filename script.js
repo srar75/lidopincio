@@ -12,13 +12,33 @@ hamburger.addEventListener('click', () => {
     document.body.classList.toggle('menu-open');
 });
 
-// Close mobile menu when clicking a link with animación
+// Prevenir scroll cuando el menú móvil está abierto
+document.body.addEventListener('touchmove', function(e) {
+    if (document.body.classList.contains('menu-open')) {
+        e.preventDefault();
+    }
+}, { passive: false });
+
+// Close mobile menu when clicking a link con animación
 document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
         document.body.classList.remove('menu-open');
     });
+});
+
+// Cerrar el menú también cuando se hace clic fuera
+document.addEventListener('click', (e) => {
+    const isMenuOpen = navMenu.classList.contains('active');
+    const isClickInsideMenu = navMenu.contains(e.target);
+    const isClickOnHamburger = hamburger.contains(e.target);
+    
+    if (isMenuOpen && !isClickInsideMenu && !isClickOnHamburger) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+    }
 });
 
 // Header scroll efecto con transparencia dinámica
@@ -36,16 +56,21 @@ window.addEventListener('scroll', () => {
 
     // Scroll to top button con animación
     const scrollTop = document.querySelector('.scroll-top');
-    scrollTop.classList.toggle('active', scrollPosition > 500);
+    if (scrollTop) {
+        scrollTop.classList.toggle('active', scrollPosition > 500);
+    }
 });
 
 // Scroll to top con animación suave
-document.querySelector('.scroll-top').addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+const scrollTopButton = document.querySelector('.scroll-top');
+if (scrollTopButton) {
+    scrollTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-});
+}
 
 // Smooth scrolling para enlaces con offset dinámico
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -71,33 +96,73 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Efectos de hover mejorados para elementos de contacto
-document.querySelectorAll('.contact-link').forEach(link => {
-    link.addEventListener('mouseenter', function() {
-        this.querySelector('.contact-icon').style.transform = 'scale(1.2) rotate(10deg)';
+// Optimización de efectos según el dispositivo
+if (!isTouchDevice) {
+    // Efectos de hover mejorados para elementos de contacto (solo en desktop)
+    document.querySelectorAll('.contact-link').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.querySelector('.contact-icon').style.transform = 'scale(1.2) rotate(10deg)';
+        });
+
+        link.addEventListener('mouseleave', function() {
+            this.querySelector('.contact-icon').style.transform = 'scale(1) rotate(0)';
+        });
     });
 
-    link.addEventListener('mouseleave', function() {
-        this.querySelector('.contact-icon').style.transform = 'scale(1) rotate(0)';
-    });
-});
+    // Animación para el botón de reserva (solo en desktop)
+    const reserveButton = document.querySelector('.btn-reserve');
+    if (reserveButton) {
+        reserveButton.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px)';
+            this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
+        });
 
-// Animación para el botón de reserva
-const reserveButton = document.querySelector('.btn-reserve');
-if (reserveButton) {
-    reserveButton.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px)';
-        this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
-    });
+        reserveButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+        });
+    }
+    
+    // Animación para el logo (solo en desktop)
+    const logoImage = document.querySelector('.header-logo');
+    if (logoImage) {
+        // Pequeña animación al cargar la página
+        setTimeout(() => {
+            logoImage.style.transform = 'rotate(8deg) scale(1.1)';
+            setTimeout(() => {
+                logoImage.style.transform = 'rotate(0deg) scale(1)';
+            }, 400);
+        }, 1000);
 
-    reserveButton.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-        this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+        // Efecto suave al pasar el cursor
+        const logoContainer = document.querySelector('.logo-container');
+        logoContainer.addEventListener('mouseenter', () => {
+            logoImage.style.transform = 'rotate(8deg) scale(1.1)';
+        });
+
+        logoContainer.addEventListener('mouseleave', () => {
+            logoImage.style.transform = 'rotate(0deg) scale(1)';
+        });
+    }
+
+    // Efecto de hover para botones (solo en desktop)
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
+        });
+
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+        });
     });
 }
 
-// IntersectionObserver para animaciones al hacer scroll
+// IntersectionObserver para animaciones al hacer scroll (funciona en todos los dispositivos)
 const createObserver = (elements, options, callback) => {
+    if (!elements || elements.length === 0) return;
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -114,77 +179,87 @@ const createObserver = (elements, options, callback) => {
 
 // Animación para los elementos de servicio
 const serviceItems = document.querySelectorAll('.service-item');
-serviceItems.forEach((item, index) => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(50px)';
-    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    item.style.transitionDelay = `${index * 0.1}s`;
-});
+if (serviceItems.length > 0) {
+    serviceItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(50px)';
+        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        item.style.transitionDelay = `${index * 0.1}s`;
+    });
 
-createObserver(serviceItems, { threshold: 0.2 }, (target) => {
-    target.style.opacity = '1';
-    target.style.transform = 'translateY(0)';
-});
+    createObserver(serviceItems, { threshold: 0.1 }, (target) => {
+        target.style.opacity = '1';
+        target.style.transform = 'translateY(0)';
+    });
+}
 
 // Animación para los elementos de menú
 const menuHighlights = document.querySelectorAll('.menu-highlight');
-menuHighlights.forEach((item, index) => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(50px)';
-    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    item.style.transitionDelay = `${index * 0.1}s`;
-});
+if (menuHighlights.length > 0) {
+    menuHighlights.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(50px)';
+        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        item.style.transitionDelay = `${index * 0.1}s`;
+    });
 
-createObserver(menuHighlights, { threshold: 0.2 }, (target) => {
-    target.style.opacity = '1';
-    target.style.transform = 'translateY(0)';
-});
+    createObserver(menuHighlights, { threshold: 0.1 }, (target) => {
+        target.style.opacity = '1';
+        target.style.transform = 'translateY(0)';
+    });
+}
 
 // Animación para los elementos de galería
 const galleryItems = document.querySelectorAll('.gallery-item');
-galleryItems.forEach((item, index) => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(50px)';
-    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    item.style.transitionDelay = `${index * 0.1}s`;
-});
+if (galleryItems.length > 0) {
+    galleryItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(50px)';
+        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        item.style.transitionDelay = `${index * 0.1}s`;
+    });
 
-createObserver(galleryItems, { threshold: 0.2 }, (target) => {
-    target.style.opacity = '1';
-    target.style.transform = 'translateY(0)';
-});
+    createObserver(galleryItems, { threshold: 0.1 }, (target) => {
+        target.style.opacity = '1';
+        target.style.transform = 'translateY(0)';
+    });
+}
 
 // Animación para los elementos de texto
 const textElements = document.querySelectorAll('.section-title, .about-text, .experience-text, .contact-info');
-textElements.forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(30px)';
-    element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-});
+if (textElements.length > 0) {
+    textElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    });
 
-createObserver(textElements, { threshold: 0.2 }, (target) => {
-    target.style.opacity = '1';
-    target.style.transform = 'translateY(0)';
-});
+    createObserver(textElements, { threshold: 0.1 }, (target) => {
+        target.style.opacity = '1';
+        target.style.transform = 'translateY(0)';
+    });
+}
 
 // Animación para imágenes
 const images = document.querySelectorAll('.about-img, .experience-img, .contact-map');
-images.forEach(image => {
-    image.style.opacity = '0';
-    image.style.transform = 'translateX(50px)';
-    image.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-});
+if (images.length > 0) {
+    images.forEach(image => {
+        image.style.opacity = '0';
+        image.style.transform = 'translateX(50px)';
+        image.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    });
 
-createObserver(images, { threshold: 0.2 }, (target) => {
-    target.style.opacity = '1';
-    target.style.transform = 'translateX(0)';
-});
+    createObserver(images, { threshold: 0.1 }, (target) => {
+        target.style.opacity = '1';
+        target.style.transform = 'translateX(0)';
+    });
+}
 
-// Efecto de paralaje mejorado
+// Efecto de paralaje mejorado SOLO para desktop
 const parallaxElements = document.querySelectorAll('.hero, .about, .menu, .experience, .contact');
 
 function updateParallax() {
-    if (isTouchDevice) return;
+    if (isTouchDevice || window.innerWidth < 992) return;
     
     parallaxElements.forEach(element => {
         const scrollPosition = window.pageYOffset;
@@ -207,193 +282,60 @@ function updateParallax() {
     });
 }
 
-// Solo aplicar paralelaje en equipos no táctiles
-if (!isTouchDevice) {
+// Solo aplicar paralelaje en equipos no táctiles y pantallas grandes
+if (!isTouchDevice && window.innerWidth >= 992) {
     window.addEventListener('scroll', updateParallax);
     updateParallax();
 }
 
-// Animación para el logo
-const logoImage = document.querySelector('.header-logo');
-if (logoImage) {
-    // Pequeña animación al cargar la página
-    setTimeout(() => {
-        logoImage.style.transform = 'rotate(8deg) scale(1.1)';
-        setTimeout(() => {
-            logoImage.style.transform = 'rotate(0deg) scale(1)';
-        }, 400);
-    }, 1000);
-
-    // Efecto suave al pasar el cursor
-    const logoContainer = document.querySelector('.logo-container');
-    logoContainer.addEventListener('mouseenter', () => {
-        logoImage.style.transform = 'rotate(8deg) scale(1.1)';
-    });
-
-    logoContainer.addEventListener('mouseleave', () => {
-        logoImage.style.transform = 'rotate(0deg) scale(1)';
-    });
-}
-
-// Efecto de hover para botones
-document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px)';
-        this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
-    });
-
-    btn.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-        this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
-    });
-});
-
-// Efecto para el texto del logo
-const logoText = document.querySelector('.logo-text');
-if (logoText) {
-    logoText.addEventListener('mouseenter', function() {
-        this.style.color = 'var(--secondary-color)';
-        this.style.textShadow = '0 0 15px rgba(255, 153, 51, 0.3)';
-        
-        // Animación de la línea inferior
-        const afterElem = document.createElement('style');
-        afterElem.textContent = `.logo-text:after { width: 100%; }`;
-        document.head.appendChild(afterElem);
-        
-        this.dataset.styleElem = document.head.childElementCount - 1;
-    });
-
-    logoText.addEventListener('mouseleave', function() {
-        this.style.color = '';
-        this.style.textShadow = '';
-        
-        // Eliminar el estilo temporal
-        if (this.dataset.styleElem) {
-            const styleElem = document.head.children[this.dataset.styleElem];
-            if (styleElem) {
-                document.head.removeChild(styleElem);
-            }
-        }
-    });
-}
-
-// Inicializar elementos al cargar la página
+// Manejo de carga de imágenes para mejorar rendimiento
 document.addEventListener('DOMContentLoaded', () => {
-    // Animación de entrada para el hero
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        heroContent.style.opacity = '0';
-        heroContent.style.transform = 'translateY(30px)';
-        
-        setTimeout(() => {
-            heroContent.style.opacity = '1';
-            heroContent.style.transform = 'translateY(0)';
-            heroContent.style.transition = 'opacity 1s ease, transform 1s ease';
-        }, 300);
-    }
+    const lazyImages = document.querySelectorAll('img');
     
-    // Comprobar si hay hash en la URL para scroll a esa sección
-    if (window.location.hash) {
-        const targetElement = document.querySelector(window.location.hash);
-        if (targetElement) {
-            setTimeout(() => {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const offset = headerHeight + 20;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }, 500);
-        }
-    }
-
-    // Verificar si estamos en scroll para aplicar estilo al header
-    if (window.scrollY > 0) {
-        header.classList.add('scrolled');
-        const opacity = Math.min(0.98, 0.9 + window.scrollY / 1000);
-        header.style.backgroundColor = `rgba(29, 53, 87, ${opacity})`;
-    }
-
-    // Activar botón scroll-to-top si ya estamos en scroll
-    if (window.scrollY > 500) {
-        document.querySelector('.scroll-top').classList.add('active');
-    }
-});
-
-// Mejorar accesibilidad para elementos interactivos
-document.querySelectorAll('.service-item, .menu-highlight, .gallery-item, .contact-link, .social-link, .btn')
-    .forEach(item => {
-        // Asegurar que elementos interactivos pueden recibir foco
-        if (!item.getAttribute('tabindex')) {
-            item.setAttribute('tabindex', '0');
-        }
-
-        // Permitir activación con teclado
-        item.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                if (this.tagName === 'A' || this.tagName === 'BUTTON') {
-                    this.click();
-                } else {
-                    const link = this.querySelector('a');
-                    if (link) link.click();
-                }
+    if ('loading' in HTMLImageElement.prototype) {
+        // Si el navegador soporta lazy loading nativo
+        lazyImages.forEach(img => {
+            if (!img.hasAttribute('loading')) {
+                img.setAttribute('loading', 'lazy');
             }
         });
-    });
+    } else {
+        // Fallback para navegadores que no soportan lazy loading nativo
+        const lazyImageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const lazyImage = entry.target;
+                    if (lazyImage.dataset.src) {
+                        lazyImage.src = lazyImage.dataset.src;
+                        lazyImage.removeAttribute('data-src');
+                        lazyImageObserver.unobserve(lazyImage);
+                    }
+                }
+            });
+        });
 
-// Mejora del efecto de imágenes en hover
-document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('mouseenter', function() {
-        const overlay = this.querySelector('.gallery-overlay');
-        const text = this.querySelector('.gallery-text');
-        
-        overlay.style.height = '100%';
-        setTimeout(() => {
-            text.style.opacity = '1';
-            text.style.transform = 'translateY(0)';
-        }, 200);
-    });
-
-    item.addEventListener('mouseleave', function() {
-        const overlay = this.querySelector('.gallery-overlay');
-        const text = this.querySelector('.gallery-text');
-        
-        text.style.opacity = '0';
-        text.style.transform = 'translateY(50px)';
-        
-        setTimeout(() => {
-            overlay.style.height = '0';
-        }, 100);
-    });
+        lazyImages.forEach(lazyImage => {
+            if (lazyImage.dataset.src) {
+                lazyImageObserver.observe(lazyImage);
+            }
+        });
+    }
 });
 
-// Efecto de carga al enviar el formulario de newsletter
-const newsletterForm = document.querySelector('.newsletter form');
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+// Detectar cambios de orientación para ajustar elementos
+window.addEventListener('orientationchange', () => {
+    // Pequeño retraso para asegurar que los elementos se reajusten correctamente
+    setTimeout(() => {
+        if (document.body.classList.contains('menu-open')) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
         
-        const button = this.querySelector('button');
-        const input = this.querySelector('input');
-        const originalText = button.textContent;
-        
-        if (!input.value.trim()) return;
-        
-        button.textContent = 'Enviando...';
-        button.disabled = true;
-        
-        // Simulamos el envío
-        setTimeout(() => {
-            button.textContent = '¡Gracias!';
-            input.value = '';
-            
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.disabled = false;
-            }, 2000);
-        }, 1500);
-    });
-}
+        // Forzar recálculo de altura de elementos en caso de cambios de orientación
+        const header = document.querySelector('header');
+        if (header) {
+            document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
+        }
+    }, 300);
+});

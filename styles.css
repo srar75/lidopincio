@@ -1240,143 +1240,251 @@ footer:before {
 @media screen and (max-width: 991px) {
     .container {
         width: 95%;
+        padding: 0 10px;
     }
-  
+    
     .hero h1 {
-        font-size: 3rem;
+        font-size: 2.8rem;
     }
-  
+    
     .hero p {
         font-size: 1.1rem;
     }
-  
+    
     .menu-highlight {
         width: 100%;
+        margin-right: 0;
     }
 }
   
 @media screen and (max-width: 768px) {
     .hero {
-        background-attachment: scroll;
+        height: auto;
+        min-height: 100vh;
     }
-  
+    
     .hero h1, .hero p {
-        text-align: center;
+        padding: 0 10px;
     }
-  
+    
     .nav-menu {
         position: fixed;
-        top: 85px;
-        left: -100%;
-        flex-direction: column;
-        background-color: rgba(29, 53, 87, 0.95);
+        background: var(--dark-color);
+        height: 100vh;
         width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        padding: 15px 0;
-        z-index: 999;
-        backdrop-filter: blur(10px);
-    }
-  
-    .nav-menu.active {
+        flex-direction: column;
+        clip-path: circle(0px at 90% -20%);
+        -webkit-clip-path: circle(0px at 90% -20%);
+        transition: all 0.7s ease-out;
+        pointer-events: none;
+        top: 0;
         left: 0;
+        justify-content: center;
     }
-  
+    
+    .nav-menu.active {
+        clip-path: circle(1500px at 90% -20%);
+        -webkit-clip-path: circle(1500px at 90% -20%);
+        pointer-events: all;
+    }
+    
     .nav-menu li {
         margin: 15px 0;
+        text-align: center;
     }
-  
+    
     .hamburger {
         display: block;
+        z-index: 1001;
     }
-  
+    
     .hamburger.active div:nth-child(1) {
         transform: rotate(-45deg) translate(-5px, 6px);
     }
-  
+    
     .hamburger.active div:nth-child(2) {
         opacity: 0;
     }
-  
+    
     .hamburger.active div:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
     }
-  
+    
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
     }
-  
+    
     .hero p {
         font-size: 1rem;
     }
-  
+    
     .hero-content {
-        padding: 30px;
-        width: 90%;
+        padding: 30px 15px;
     }
-  
+    
     .section-title h2 {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
     }
-  
+    
     .about-content, .experience-content, .contact-content {
         flex-direction: column;
     }
-  
+    
     .gallery-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
-  
+    
     .contact-item {
-        margin-bottom: 20px;
+        flex-direction: column;
+        text-align: center;
     }
-  
+    
     .quick-reserve {
-        margin-top: 20px;
+        flex-direction: column;
     }
-  
+    
     .logo-text {
-        font-size: 30px;
+        font-size: 28px;
     }
-  
+    
     .header-logo {
-        height: 55px;
+        height: 50px;
+    }
+    
+    .contact-content {
+        flex-direction: column;
+    }
+    
+    .contact-info {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .contact-map {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .contact-item {
+        flex-direction: row;
+        text-align: left;
+        padding: 12px 0;
+    }
+    
+    .contact-icon {
+        margin-right: 15px;
+        margin-bottom: 0;
+        min-width: 40px;
+    }
+    
+    .social-links {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    
+    .social-link {
+        margin: 5px;
+    }
+    
+    .quick-reserve {
+        align-items: center;
+    }
+    
+    .btn-reserve {
+        margin-top: 10px;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
     }
 }
   
 @media screen and (max-width: 576px) {
     .container {
         width: 100%;
-        padding: 0 20px;
+        padding: 0 15px;
     }
-  
+    
     .hero h1 {
         font-size: 2rem;
     }
-  
+    
     .hero-content {
-        padding: 30px 20px;
+        padding: 25px 10px;
     }
-  
+    
     .section-title h2 {
-        font-size: 1.8rem;
-    }
-  
-    .about-text h3, .experience-text h3, .contact-info h3 {
         font-size: 1.5rem;
     }
-  
+    
+    .about-text h3, .experience-text h3, .contact-info h3 {
+        font-size: 1.3rem;
+    }
+    
     .footer-col {
         width: 100%;
     }
-  
+    
     .logo-text {
-        font-size: 26px;
+        font-size: 24px;
     }
-  
+    
     .header-logo {
         height: 45px;
+    }
+    
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-img, .about-text, .experience-img, .experience-text {
+        width: 100%;
+    }
+    
+    .menu-highlights {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .contact-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .contact-item {
+        padding: 10px 0;
+    }
+    
+    .contact-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    
+    .contact-text h5 {
+        font-size: 16px;
+    }
+    
+    .contact-text p {
+        font-size: 14px;
+    }
+    
+    .map {
+        height: 250px;
     }
 }
 
@@ -1495,4 +1603,86 @@ footer:before {
 
 .social-link:hover i {
   transform: rotate(360deg);
+}
+
+/* Asegurarse de que las imágenes sean responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mejorar touch targets para móviles */
+.nav-menu a, .btn, .contact-item, .social-link, .footer-links a {
+    padding: 10px;
+}
+
+/* Ajustes para grid layouts */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.menu-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.contact-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* Ajustes para flex layouts responsivos */
+.about-content, .experience-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.about-img, .about-text, .experience-img, .experience-text {
+    flex: 1 1 300px;
+}
+
+/* Touch friendly hover effects */
+@media (hover: hover) {
+    .btn:hover, .nav-menu a:hover, .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+}
+
+/* Corregir problemas de overflow */
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Fix para sticky header en iOS */
+header {
+    -webkit-transform: translateZ(0);
+}
+
+/* Fix para touch devices */
+@media (hover: none) {
+    .contact-item, .social-link, .btn {
+        transition: none;
+    }
+    
+    .contact-item:active, .social-link:active, .btn:active {
+        transform: scale(0.98);
+    }
 }
